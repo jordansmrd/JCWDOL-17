@@ -242,15 +242,15 @@ class Player {
 }
 
 class ShootingGame {
-  player1: Player;
-  player2: Player;
+  private player1: Player;
+  private player2: Player;
   constructor(player1: Player, player2: Player) {
     this.player1 = player1;
     this.player2 = player2;
   }
 
   private random() {
-    return Math.floor(Math.random() * 2);
+    return Math.floor(Math.random() * 2); // 0-1
   }
 
   private getRandomItem(): {
@@ -269,7 +269,7 @@ class ShootingGame {
       this.player1.useItem(this.getRandomItem());
       this.player2.useItem(this.getRandomItem());
       if (this.random() > 0) {
-        this.player1.damage(this.player2.p);
+        this.player1.damage(this.player2.p); // 10 diserang sama player 2 = 0
         if (this.player1.h == 0) break;
         this.player2.damage(this.player1.p);
       } else {
@@ -283,8 +283,8 @@ class ShootingGame {
   }
 }
 
-const p1 = new Player("Jordan");
-const p2 = new Player("Justin");
+const p1 = new Player("david");
+const p2 = new Player("cindy");
 
 const game = new ShootingGame(p1, p2);
-// game.start();
+game.start();
