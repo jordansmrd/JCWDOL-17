@@ -113,7 +113,7 @@ const mergeAndRemove=(obj1:Ekskul[],obj2:Ekskul[]) :Ekskul[]=>{
     return unique
 }
 console.log(mergeAndRemove(Futsal,Band))
-
+// -------------------------------------------------------------------------------------------------------------
 // create a shooting game 
 
 // first define
