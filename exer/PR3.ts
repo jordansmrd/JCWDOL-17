@@ -113,3 +113,100 @@ const mergeAndRemove=(obj1:Ekskul[],obj2:Ekskul[]) :Ekskul[]=>{
     return unique
 }
 console.log(mergeAndRemove(Futsal,Band))
+
+// create a shooting game 
+
+// first define
+type Weapon = {
+    name:string;
+    power:number;
+}
+
+type Item = {
+    name:string;
+    aid?:number;
+    power?:number;
+}
+class User{
+    health:number;
+    power:number;
+    weapon?:Weapon;
+    item?:Item;
+    constructor (health:number,power:number,weapon?:Weapon|null,item?:Item|null){
+        this.health = health;
+        this.power = power;
+        this.weapon= weapon ?? undefined;
+        this.item = item ?? undefined;
+    }
+
+    attack(target:User):void{ // attack jadi method
+        const arms = this.power + (this.weapon?.power || 0);//tangan kosong atau ada senjata, kalau ga ada +0
+        target.health -= arms;
+        target.health = target.health < 0 ?  0 : target.health;
+        console.log(`${this.weapon?.name|| "tangan kosong"} kena! Darah${target.health}`);
+    }
+
+    pick(item: Weapon|Item):void {//method pemilihan senjata atau penyembuhan
+        if ("power" in item) {
+            this.weapon = item as Weapon;
+            console.log(`lu ambil ${this.weapon.name} dengan damage ${this.weapon.power}`);
+        } else if ("aid" in item)  {
+            this.item = item as Item;
+            console.log(`lu ambil ${this.item.name} dengan penyembuhan ${this.item.aid}`)
+        }
+    }
+}
+// buat variable yang akkan berjalan, yaitu players, weapons, and item.
+const player1 = new User(100, 10, null,null);
+const player2 = new User(100, 10, null,null);
+
+const weaponsCrate : Weapon[] = [
+    {name:"Glock 15", power:20},
+    {name:"REC7", power:30},
+    {name:"Salt Shotgun", power:15},
+]
+
+const itemscrate : Item[] = [
+    {name:"perban", aid: 30},
+    {name:"Grenade", power:74},
+    {name:"Red Bull", aid: 5}
+]
+//fungsi yang bkin pusing
+// ngambil crate
+    const dapetSenjata=():Weapon=>{
+        return weaponsCrate[Math.floor(Math.random()*weaponsCrate.length)];
+    }
+    const dapetItem=():Item=>{
+        return itemscrate[Math.floor(Math.random()*itemscrate.length)]
+    }
+
+// fungsi PUBG
+const pUBG = () => {
+    let gantianPertama = true;//define yang main pertama
+
+    while (player1.health>0 && player2.health>0){
+        const yangSekarang = gantianPertama ? player1 : player2; // karena sudah terdefine maka player1 yang duluan
+        const musuh = gantianPertama ? player2 : player1;// kalau nilai gantianPertama true jadi player kedua jadi samsak dulu
+    
+        console.log(`sekarang gantiannya ${gantianPertama? player1:player2}`);
+
+        const pilihan = Math.random()<0.5? "attack": "pick";
+
+        if(pilihan === "pick"){
+            const barang = Math.random()<0.5? dapetSenjata() : dapetItem();
+            yangSekarang.pick(barang);
+        } else{
+            yangSekarang.attack(musuh);
+        }
+
+        if (musuh.health <= 0 ){
+            console.log(`Stop! ${gantianPertama ?player2:player1} udah mati, jangan di serang lagi!`);
+            break;
+        }
+
+        gantianPertama = !gantianPertama;
+    
+    }
+};
+
+pUBG()
