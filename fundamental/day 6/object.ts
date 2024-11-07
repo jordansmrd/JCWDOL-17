@@ -158,7 +158,7 @@ let name = "jhonny"; //jhonny => a1 'jhonny'
 let newName = name; //jhonny => a2 'jhonny'
 name = "Doe"; //Doe //reassign a1 'Doe'
 
-let person = {
+let person: { [key: string]: string | number } = {
   name: "donny",
   age: 26,
 }; // value dari person => a3
@@ -177,9 +177,11 @@ console.log(person, person2, person3);
 
 //for in
 for (const key in person) {
-  // const element = person[key]; //value lewat key
+  // if (key == "name" || key == "age") {
+  const element = person[key]; //value lewat key
   console.log(key);
-  // console.log(element);
+  console.log(element);
+  // }
 }
 
 //destructuring proses menggeluarkan key supaya bisa diakses melalui variable

@@ -80,7 +80,9 @@ class User3 {
     const splittedValue = value.split(" "); // "rose blackpink" => ["rose", "blackpink"]
     console.log(splittedValue);
 
-    if (splittedValue[1] == undefined)
+    if (splittedValue[0].length < 4) {
+      throw new Error("nama depan minimal 4 karakter");
+    } else if (splittedValue[1] == undefined)
       throw new Error("nama belakang wajib ada");
     this.fName = splittedValue[0];
     this.lName = splittedValue[1];
@@ -93,7 +95,59 @@ class User3 {
 
 const newUser = new User3("John", "Doe");
 
-newUser.fullname = "jenny bp";
+newUser.fullname = "lisa blackpink";
 console.log(newUser.fullname); // read-only
 
 console.log(newUser.fullname2());
+
+//inheritance
+class Product {
+  public productName: string;
+  public price: number;
+  protected adminName: string;
+
+  constructor(name: string, price: number, admin: string) {
+    this.productName = name;
+    this.price = price;
+    this.adminName = admin;
+  }
+}
+
+const tv = new Product('TV 55" Samsung OLED', 3000000, "jordan");
+const sepeda = new Product("Sepeda Fixie", 1500000, "jordan");
+console.log(tv, sepeda);
+
+class Book extends Product {
+  // public productName: string;
+  // public price: number;
+  public author: string;
+  public total_page: number;
+  constructor(
+    name: string,
+    price: number,
+    author: string,
+    total_page: number,
+    admin: string
+  ) {
+    super(name, price, admin); // memanggil constructor milik parent(Product)
+    // this.productName = name;
+    // this.price = price;
+    this.author = author;
+    this.total_page = total_page;
+  }
+
+  get() {
+    return this.adminName;
+  }
+}
+
+const komikNaruto = new Book("Komik Naruto", 15000, "udin", 110, "jordan");
+console.log(komikNaruto.get());
+
+//public bisa diaccess lewat instance
+//private hanya bisa diaccess di dalam class saja
+//protected hanya bisa diaccess di dalam class dan sub-class(class turunan)
+class Tree {}
+console.log(komikNaruto instanceof Book); //true
+console.log(komikNaruto instanceof Product); //true
+console.log(komikNaruto instanceof Tree); //false
