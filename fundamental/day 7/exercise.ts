@@ -126,7 +126,7 @@ const switchKeys = (arr: IAnyObject[]) => {
   const swap = arrEntries.map((val) => {
     console.log(val, "ini val"); //[ [ 'name', 'David' ], [ 'age', 20 ] ]
 
-    return val.map((val2) => {
+    return val.map((val2: any) => {
       //[ 'name', 'David' ], [ 'age', 20 ]
       return [val2[1], val2[0]]; // //[ 'David', 'Name' ], [ 20, "age" ]
     }); //[[ 'David', 'Name' ], [ 20, "age" ]]
