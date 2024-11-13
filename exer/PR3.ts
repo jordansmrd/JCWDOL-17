@@ -113,7 +113,7 @@ const mergeAndRemove=(obj1:Ekskul[],obj2:Ekskul[]) :Ekskul[]=>{
     return unique
 }
 console.log(mergeAndRemove(Futsal,Band))
-
+// -------------------------------------------------------------------------------------------------------------
 // create a shooting game 
 
 // first define
@@ -210,80 +210,3 @@ const pUBG = () => {
 };
 
 pUBG()
-
-// Create a program to create transaction
-// ● Product Class
-// ○ Properties
-// ■ Name
-// ■ Price
-// ● Transaction Class
-// ○ Properties
-// ■ Total
-// ■ Product
-// ● All product data
-// ● Qty
-
-// ○ Add to cart method → Add product to transaction
-// ○ Show total method → Show total current transaction
-// ○ Checkout method → Finalize transaction, return transaction data
- 
-class Barang {
-    name:string;
-    price:number;
-    qty:number
-    constructor(name:string,price:number,qty:number){
-        this.name = name;
-        this.price = price;
-        this.qty = qty;
-    }
-
-    hargaTotal():any{
-        return this.price*this.qty
-    }
-}
-
-class Keranjang {
-    produk: Barang[] = [];
-    total:number = 0;
-    cart(produk:Barang):void{
-        this.produk.push(produk);
-        this.total += produk.hargaTotal()
-    }
-
-    invoice():number{
-        return this.total;
-    }
-
-    addItems(products:Barang[]):void{
-        products.forEach(product => {
-            this.cart(product)
-        });
-    }
-
-    cashier():void{
-        console.log("===== Invoice =====");
-        this.produk.forEach((item, index) => {
-            console.log(`Item ${index + 1}: ${item.name}`);
-            console.log(`  Quantity: ${item.qty}`);
-            console.log(`  Unit Price: ${item.price}`);
-            console.log(`  Total: ${item.hargaTotal()}`);
-            console.log("-------------------");
-        });
-        console.log(`Grand Total: ${this.total}`);
-        console.log("===================");
-    }
-}
-
-const item1 = new Barang("Kondom", 6000, 2);
-const item2 = new Barang("Aqua 500ml", 3000, 1);
-const item3 = new Barang("Vivo Lubricant Gel", 60000, 1);
-
-const keranjang = new Keranjang();
-keranjang.addItems([item1,item2,item3])
-
-keranjang.cashier()
-
-
-
-
-
