@@ -288,3 +288,8 @@ const p2 = new Player("cindy");
 
 const game = new ShootingGame(p1, p2);
 game.start();
+
+// Array
+// string
+// number
+// Object
