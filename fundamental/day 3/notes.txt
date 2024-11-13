@@ -1,0 +1,62 @@
+register ke dalam github.com
+download github desktop
+
+git command
+config
+ git config --global user.name "nama_username"
+ git config --global user.email "email_user"
+ git config --list
+ buat sebuah folder sebagai repo git local kalian
+ setelah kalian menambahkan file
+ git init .
+ git add . => titik disini artinya adalah mengarah ke seluruh direktori yg ada di dalam folder
+ git commit -m "message". menyetujui file yang berada di staging area
+ git remote add labelName urlRepoGit
+ git push labelName branch_name
+
+ untuk buat versi/branch baru
+ git branch "nama branch baru" (local)
+ git checkout "nama branch baru" untuk pindah branch
+
+ git remote -v membantu kita untuk ngecek direktori saat ini menggunakan labelname apa
+
+git => sebuah service yang membantu kita untuk mengkontrol version dari project kita
+github => salah satu web based git untuk membantu kontrol git version secara online. (repository online)
+repository = tempat penyimpanan source code dari project kita (local/online)
+fetch = mendaptkan informasi perubahan yang terjadi di dalam source code
+pull = menarik hasil perubahan yang terjadi di dalam source code
+stage = mengseleksi file2 yang akan dicommit
+commit = setuju untuk menyimpan perubahan yang terjadi di source code
+push = mengirimkan hasil perubahan yang terjadi di source code ke repository (local to online repository)
+pull request = menciptakan sebuah request mengenai perubahan di dalam source code. (biasanya pada saat kita ingin mengubah source code milik orang lain)
+branch = menciptakan cabang version pada suatu source code di dalam repository
+fork = menciptakan repository baru, dari hasil repository orang lain. dimana repository ini terhubung dengan repository originnya (pemilikinya)
+
+git dapat info bahwa ada perubahan di branch lain.
+apakah branch utama perlu mengikuti perubahannya?
+pull request. mengirim seluruh hasil commit yang dibuat dari branch lain menuju ke branch yg dipilih
+
+development , testing , production
+clone develop => feature_live => pull request.
+clone develop => feature_discount_khusus => pull request
+
+development ada versi live
+development ada versi live dan discount khusus
+
+development akan pull request ke testing
+testing akan memiliki feature live dan discount => deploy
+proses testing berjalan mulus aman
+testing akan pull request ke production
+production deploy ke hosting/server mereka
+
+development = source code yang masih dalam development
+testing = source code yang berisikan finalisasi dari development
+
+tokopedia
+released v2.1
+
+development akan menambahkan fitur
+live jualan => orang a
+discount khusus => orang b
+
+aws => vps
