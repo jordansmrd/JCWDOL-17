@@ -1,0 +1,29 @@
+create a function 
+input height :number 
+output : console log 4 types of triangles
+
+*****
+****
+***
+**
+*
+
+*
+**
+***
+****
+*****
+
+*****
+ ****
+  ***
+   **
+    *
+    
+    *
+   **
+  ***
+ ****
+***** 
+
+
