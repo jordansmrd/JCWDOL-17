@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animal table</title>
+    <style>
+        body {
+            background-color: orange;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        img {
+            width: 80px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Animal Table</h1>
+    <table>
+       <thead>
+            <tr>
+                <th>Animal</th>
+                <th>Name</th>
+                <th>Food</th>
+                <th>Class</th>
+            </tr>
+       </thead>
+       <tbody>
+            <tr>
+                <td><img src="https://i.pinimg.com/736x/5d/0f/45/5d0f45efa998ca6de3ad3766829d16ce.jpg" alt="sombregato"></td> <!-- td berbanding lurus sama tr(table row)-->
+                <td>El <sub>Gato</sub></td>
+                <td>Gato <sup>Food</sup></td>
+                <td>
+                    <label>
+                        <input type="radio" name="Gato_type" value="vertebrae" checked> Vertebrae
+                    </label>
+                    <label>
+                        <input type="radio" name="Gato_type" value="invertebrae"> invertebrae
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7VVjExSSE7TPydj9DG2XQ8HyfcbXWheL6cQ&s" alt="Rancakbano"></td> <!-- td berbanding lurus sama tr(table row)-->
+                <td>Ondemande <sub>Rancakbano</sub></td>
+                <td>nasi <sup>padang</sup></td>
+                <td>
+                    <label>
+                        <input type="radio" name="ondemande_type" value="vertebrae" checked> Vertebrae
+                    </label>
+                    <label>
+                        <input type="radio" name="ondemande_type" value="invertebrae"> invertebrae
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="https://i.imgflip.com/8hfajk.jpg?a481008" alt="headache"></td> <!-- td berbanding lurus sama tr(table row)-->
+                <td>headache <sub>Gato</sub></td>
+                <td>head <sup>paracetamol</sup></td>
+                <td>
+                    <label>
+                        <input type="radio" name="headache_type" value="vertebrae" checked> Vertebrae
+                    </label>
+                    <label>
+                        <input type="radio" name="headache_type" value="invertebrae"> invertebrae
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="https://i.pinimg.com/736x/3b/b1/d2/3bb1d21a2bdea64e0462b20f69b1c8e6.jpg" alt="liqui"></td> <!-- td berbanding lurus sama tr(table row)-->
+                <td>Liqui <sub>Gato</sub></td>
+                <td>liquify <sup>Water</sup></td>
+                <td>
+                    <label>
+                        <input type="radio" name="liqui_type" value="vertebrae" > Vertebrae
+                    </label>
+                    <label>
+                        <input type="radio" name="liqui_type" value="invertebrae" checked> invertebrae
+                    </label>
+                </td>
+            </tr>
+       </tbody>
+    </table>
+</body>
+</html>

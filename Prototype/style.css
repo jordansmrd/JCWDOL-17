@@ -1,0 +1,96 @@
+/* general Reset */
+
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* navbar */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #070101;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 40px;
+}
+
+.navbar-links {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+.navbar-links li {
+    margin: 0 15px;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: rgb(244, 242, 238);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #00aa13;
+}
+
+/* .navbar-cta .btn {
+    padding: 8px 15px;
+    margin-left: 10px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+} */
+
+/* .login-btn {
+    background-color: #fff;
+    color: #00aa13;
+    border: 1px solid #00aa13;
+} */
+
+.content-above-hero {
+    text-align: center;
+    padding: 20px 15px;
+    background-image: url(https://cdn-site.gojek.com/uploads/hero_b18c33ed07.jpg);
+    background-size: cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start ;
+   padding-left: 10vh;
+   padding-right: 10vh;
+}
+
+.content-above-hero h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    line-height: 1.2;
+    max-width: 80%;
+    text-align: left;
+    margin-left: 0;
+}
+
+.introduction {}

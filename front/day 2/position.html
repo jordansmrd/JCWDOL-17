@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .position-example {
+            border: 2px solid #0077cc;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .example-box {
+            width: 150px;
+            height: 50px;
+            background-color: #0077cc;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .static {
+            position: static;
+        }
+        .relative {
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
+        .absolute {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .fixed {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        .sticky {
+            position: sticky;
+            top: 0;
+            background-color: #ff9800;
+        }a
+    </style>
+</head>
+<body>
+    <h1>CSS Position Explained</h1>
+    <p>CSS <code>position</code> property defines how an element is positioned in the document. Here are the common values:</p>
+
+    <div class="position-example">
+        <h2>Static (Default)</h2>
+        <p>The default position. Elements are placed in the normal document flow.</p>
+        <div class="example-box static">Static</div>
+    </div>
+
+    <div class="position-example">
+        <h2>Relative</h2>
+        <p>The element is positioned relative to its normal position. Offsets can be applied using <code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code>.</p>
+        <div class="example-box relative">Relative</div>
+    </div>
+
+    <div class="position-example">
+        <h2>Absolute</h2>
+        <p>The element is positioned relative to its nearest positioned (non-static) ancestor or the document if none exist.</p>
+        <div class="position-example" style="position: relative;">
+            <div class="example-box absolute">Absolute</div>
+        </div>
+    </div>
+
+    <div class="position-example">
+        <h2>Fixed</h2>
+        <p>The element is positioned relative to the viewport. It does not move when the page is scrolled.</p>
+        <div class="example-box fixed">Fixed</div>
+    </div>
+
+    <div class="position-example">
+        <h2>Sticky</h2>
+        <p>The element toggles between relative and fixed, based on the user's scroll position. It sticks to a defined offset but moves with the content until a boundary is reached.</p>
+        <div class="example-box sticky">Sticky</div>
+    </div>
+
+</body>
+</html>

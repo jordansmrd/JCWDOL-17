@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gojek Navbar with Hero Banner</title>
+  <style>
+    /* General Reset */
+body, ul, li {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-logo img {
+  height: 40px;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-links li {
+  margin: 0 15px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #00aa13; /* Gojek green */
+}
+
+.navbar-cta .btn {
+  padding: 8px 15px;
+  margin-left: 10px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.login-btn {
+  background-color: #fff;
+  color: #00aa13;
+  border: 1px solid #00aa13;
+}
+
+.app-btn {
+  background-color: #00aa13;
+  color: #fff;
+}
+
+/* Content Above Hero Banner */
+.content-above-hero {
+  text-align: center;
+  padding: 20px 15px;
+  background-color: #f8f8f8;
+}
+
+.content-above-hero h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.content-above-hero p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Overlay Content */
+.overlay {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.overlay h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.cta-button {
+  padding: 10px 20px;
+  background-color: #00aa13;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #007d0e; /* Darker green on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .navbar-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+  }
+
+  .content-above-hero h1 {
+    font-size: 2rem;
+  }
+
+  .overlay h2 {
+    font-size: 1.5rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="	https://lelogama.go-jek.com/prime/upload/gojek-horizontal-logo-white.svg
+      " alt="Logo">
+    </div>
+    <ul class="navbar-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#careers">GoCorp</a></li>
+      <li><a href="#company">GoCorp</a></li>
+      <li><a href="#products">GoCorp</a></li>
+      <li><a href="#blog">GoCorp</a></li>
+      <li><a href="#help">GoCorp</a></li>
+      <li><a href="#language">GoCorp</a></li>
+    </ul>
+    <div class="navbar-cta">
+      <button class="btn login-btn">Login</button>
+      <button class="btn app-btn">Get App</button>
+    </div>
+    <!-- creating mobile friendly responsive design -->
+    <div class="navbar-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Content Above Hero Banner -->
+  <section class="content-above-hero">
+    <h1>Welcome to Gojek</h1>
+    <p>Your one-stop solution for transportation, food delivery, and more!</p>
+  </section>
+
+  <!-- Hero Section with Image -->
+  <section class="hero">
+    <img src="banner.jpg" alt="Hero Banner" class="hero-image">
+    <div class="overlay">
+      <h2>Explore Endless Possibilities</h2>
+      <button class="cta-button">Get Started</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
