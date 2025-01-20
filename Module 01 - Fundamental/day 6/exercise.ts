@@ -18,7 +18,7 @@
 // Lowest
 // Average
 
-class Student {
+class Student1 {
   name: string;
   email: string;
   age: number;
@@ -54,15 +54,15 @@ class LHA {
 
 const test = new LHA([5, 3, 7, 8, 10, 23, 45]);
 
-const calculateArrayStudent = (students: Student[]) => {
+const calculateArrayStudent = (students: Student1[]) => {
   return {
     score: new LHA(students.map((student) => student.score)),
     age: new LHA(students.map((student) => student.age)),
   };
 };
 
-const john = new Student("john", "john@mail.com", 15, 88);
-const alex = new Student("alex", "alex@mail.com", 16, 90);
-const bambang = new Student("bambang", "bambang@mail.com", 17, 95);
+const john = new Student1("john", "john@mail.com", 15, 88);
+const alex = new Student1("alex", "alex@mail.com", 16, 90);
+const bambang = new Student1("bambang", "bambang@mail.com", 17, 95);
 
 console.log(calculateArrayStudent([john, alex, bambang]));

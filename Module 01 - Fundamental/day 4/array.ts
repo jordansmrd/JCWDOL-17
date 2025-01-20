@@ -94,11 +94,11 @@ const tmp3 = gabunganNames.filter((name, i) => {
 
 console.log(tmp3);
 
-const numbers: number[] = [1, 2, 3, 4, 5, 6];
-const genap: number[] = numbers.filter((number) =>
+const numberss: number[] = [1, 2, 3, 4, 5, 6];
+const genap: number[] = numberss.filter((number) =>
   !(number % 2) ? true : false
 );
-const ganjil: number[] = numbers.filter((number) =>
+const ganjil: number[] = numberss.filter((number) =>
   number % 2 ? true : false
 );
 // kalau false akan dieleminasi
