@@ -1,0 +1,104 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+enum gender {
+  male
+  female
+}
+
+Table member {
+  id integer [primary key]
+  first_name varchar
+  last_name varchar
+  join_date datetime
+  detail_id int [ref: <> detail_info.id]
+}
+
+Table detail_info {
+  id int [primary key]
+  id_card varchar [unique]
+  address varchar
+  gender gender
+  phone_number varchar
+  email varchar [unique]
+}
+
+Table staff {
+  id integer [primary key]
+  first_name varchar
+  last_name varchar
+  is_active bool
+  detail_id int [ref: <> detail_info.id]
+}
+
+Table staff_schedule {
+  id integer [primary key]
+  start_schedule_date timestamp
+  end_schedule_date timestamp
+  staff_id int [ref: > staff.id]
+  branch_id int [ref: > branch.id]
+}
+
+Table book {
+  id integer [primary key]
+  title varchar
+  author varchar
+  publisher varchar
+  release_date timestamp
+}
+
+Table branch {
+  id integer [primary key]
+  branch varchar
+  address varchar
+  postal_code int
+  city varchar
+}
+
+Table transaction {
+  id integer [primary key]
+  no_invoice varchar
+  transaction_date timestamp
+  total_price double
+  branch_id int [ref: > branch.id]
+  member_id int [ref: > member.id]
+  staff_id int [ref: > staff.id]
+}
+
+Table transaction_detail {
+  id integer [primary key]
+  book_id int [ref: > book.id]
+  transaction_id int [ref: > transaction.id]
+  rent_date timestamp
+  due_date timestamp
+  price double
+}
+
+enum fine_status {
+  lost
+  late
+}
+
+Table fine {
+  member_id int [ref: > member.id, primary key] 
+  transactionDetail_id int [ref: > transaction_detail.id, primary key]
+  status fine_status
+  is_paid bool
+  fine double
+}
+
+enum stock_status {
+  available 
+  rented
+  lost
+}
+
+Table stock {
+  id int [primary key]
+  book_id int [ref:> book.id]
+  transaction_id int [ref:> transaction.id]
+  branch_id int [ref:> branch.id]
+  status stock_status
+  stock int
+}
+
+

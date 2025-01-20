@@ -2,6 +2,7 @@
 select c.name, count(fc.category_id) from category c
 join film_category fc on fc.category_id = c.category_id 
 GROUP BY fc.category_id, c.name
+HAVING count(fc.category_id) > 60
 ORDER BY c.name;
 
 -- sum
