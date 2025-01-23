@@ -10,3 +10,5 @@ config({ path: resolve(__dirname, `../${envFile}`), override: true });
 export const PORT = process.env.PORT || 8000;
 
 export const prisma = new PrismaClient();
+
+export const jwt_secret = process.env.SECRET || "";
