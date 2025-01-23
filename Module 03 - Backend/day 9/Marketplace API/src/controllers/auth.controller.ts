@@ -8,7 +8,6 @@ class AuthController {
   async signIn(req: Request, res: Response, next: NextFunction) {
     try {
       const data = await authService.signIn(req);
-      if (!data) throw new ErrorHandler("wrong email/password", 400);
       responseHandler(res, "login success", data);
     } catch (error) {
       next(error);

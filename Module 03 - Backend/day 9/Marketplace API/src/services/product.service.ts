@@ -51,7 +51,7 @@ class ProductService {
   }
   async getBySlug(req: Request) {
     const { slug } = req.params;
-    return prisma.product.findUnique({
+    return await prisma.product.findUnique({
       where: {
         slug,
         isDeleted: null,

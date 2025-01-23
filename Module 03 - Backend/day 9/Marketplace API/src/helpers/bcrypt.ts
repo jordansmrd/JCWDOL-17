@@ -1,9 +1,12 @@
-import { genSalt, hash } from "bcrypt";
+/** @format */
 
+import { genSalt, hash } from "bcrypt";
 export const hashedPassword = async (
   password: string,
-  saltNumber: number = 10
+  numberSalt: number = 10
 ) => {
-  const salt = await genSalt(saltNumber);
+  const salt = await genSalt(numberSalt);
   return await hash(password, salt);
 };
+
+// npm i bcrypt @types/bcrypt
