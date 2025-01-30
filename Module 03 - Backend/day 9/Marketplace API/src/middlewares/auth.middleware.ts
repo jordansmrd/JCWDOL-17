@@ -5,7 +5,8 @@ import { verify } from "jsonwebtoken";
 import { jwt_secret } from "../config";
 import { ErrorHandler } from "../helpers/response.handler";
 import { UserLogin } from "../interfaces/user.interface";
-
+import yup from "yup";
+import { getUserByEmail } from "../helpers/user.prisma";
 export const verifyUser = (req: Request, res: Response, next: NextFunction) => {
   try {
     const { authorization } = req.headers;
@@ -19,3 +20,18 @@ export const verifyUser = (req: Request, res: Response, next: NextFunction) => {
     next(error);
   }
 };
+
+export const registerValidation =
+  (schema: yup.ObjectSchema<any>) =>
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      await schema.validate({
+        ...req.body,
+      });
+      if (await getUserByEmail(req.body.email))
+        throw new ErrorHandler("email already used");
+      return next();
+    } catch (err) {
+      next(err);
+    }
+  };

@@ -6,12 +6,17 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.7",
+    "@types/streamifier": "^0.1.2",
     "bcrypt": "^5.1.1",
+    "cloudinary": "^2.5.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "prisma": "^6.2.1"
+    "prisma": "^6.2.1",
+    "streamifier": "^0.1.1",
+    "yup": "^1.6.1",
+    "yup-password": "^0.4.0"
   },
   "name": "marketplace-api",
   "version": "1.0.0",
