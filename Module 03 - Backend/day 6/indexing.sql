@@ -1,11 +1,7 @@
-create index idx_firstname
-on actor (first_name);
+CREATE INDEX idx_firstname ON actor (first_name);
 
-select * from actor where first_name = 'NICK';
+SELECT * from actor WHERE first_name = 'NICK';
 
-select * from actor where first_name like 'N%';
-select * from actor where first_name like '%n';
+SELECT * from actor WHERE first_name like 'N%';
 
-
-select count(*) from actor;
-
+SELECT count(*) from actor 
