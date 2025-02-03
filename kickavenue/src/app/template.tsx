@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/navbar.component";
 import React from "react";
+import { SessionProvider } from "next-auth/react";
 
 type Props = {
   children: React.ReactNode;
@@ -10,8 +11,10 @@ type Props = {
 export default function Template({ children }: Props) {
   return (
     <>
-      <Navbar />
-      {children}
+      <SessionProvider>
+        <Navbar />
+        {children}
+      </SessionProvider>
     </>
   );
 }

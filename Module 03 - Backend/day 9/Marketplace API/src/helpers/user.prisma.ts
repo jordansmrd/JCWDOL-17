@@ -7,9 +7,11 @@ export const getUserByEmail = (email: string) =>
     select: {
       id: true,
       password: true,
+      email: true,
       first_name: true,
       last_name: true,
       img_src: true,
+      role: true,
     },
     where: {
       email,

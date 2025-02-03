@@ -1,39 +1,28 @@
 /** @format */
 "use client";
-import { register } from "@/app/helpers/auth";
+import { register } from "@/helpers/handlers/auth";
+import { registerInit } from "@/helpers/yup.init";
+import { registerValidator } from "@/models/auth.model";
+import { Alert, Snackbar } from "@mui/material";
 import { useFormik } from "formik";
 import Link from "next/link";
 import React from "react";
-import * as Yup from "yup";
 
 export default function Page() {
+  const [errMessage, setErrMessage] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+
   const formik = useFormik({
-    validationSchema: Yup.object({
-      name: Yup.string().min(4).required("Name is required"),
-      email: Yup.string().email().required("Email is required"),
-      password: Yup.string()
-        .matches(
-          /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          "Password must contain at least 8 characters, one uppercase, one number and one special case character"
-        )
-        .required("Password is required"),
-      confirmPassword: Yup.string()
-        .required("Password Confirmation is required")
-        .oneOf([Yup.ref("password")], "Passwords must match"),
-    }),
-    initialValues: {
-      email: "",
-      name: "",
-      password: "",
-      confirmPassword: "",
-    },
+    validationSchema: registerValidator,
+    initialValues: registerInit,
     onSubmit: async (values) => {
       try {
-        const message = await register(values);
-        alert(message);
+        setErrMessage("");
+        await register(values);
+        setOpen(true);
         formik.resetForm();
       } catch (error) {
-        if (error instanceof Error) alert(error.message);
+        if (error instanceof Error) setErrMessage(error.message);
       }
     },
   });
@@ -64,12 +53,23 @@ export default function Page() {
           type="text"
           required
           className="w-full p-4 mb-1 border rounded-md"
-          placeholder="Your Name"
-          name="name"
-          value={formik.values.name}
+          placeholder="Your First Name"
+          name="first_name"
+          value={formik.values.first_name}
           onChange={formik.handleChange}
         />
-        <p className="mb-4 text-red-400">{formik.errors.name}</p>
+        <p className="mb-4 text-red-400">{formik.errors.first_name}</p>
+
+        <input
+          type="text"
+          required
+          className="w-full p-4 mb-1 border rounded-md"
+          placeholder="Your Last Name"
+          name="last_name"
+          value={formik.values.last_name}
+          onChange={formik.handleChange}
+        />
+        <p className="mb-4 text-red-400">{formik.errors.last_name}</p>
 
         <input
           type="password"
@@ -99,6 +99,8 @@ export default function Page() {
           {" and "}
           <span className="green">Privacy Policy</span>
         </p>
+        <p className="mb-4 text-red-400">{errMessage}</p>
+
         <button
           className={`${
             !(formik.isValid && formik.dirty) || formik.isSubmitting
@@ -111,6 +113,17 @@ export default function Page() {
         </button>
         <center>{"Your data will be protected and will not be shared"}</center>
       </form>
+      <Snackbar
+        open={open}
+        autoHideDuration={1500}
+        onClose={() => setOpen(false)}
+        message="Login Success"
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert severity="success" variant="filled" sx={{ width: "100%" }}>
+          Register Success
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

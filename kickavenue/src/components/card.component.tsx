@@ -1,6 +1,6 @@
 /** @format */
 "use client";
-import { getProducts } from "@/app/helpers/api";
+import { getProducts } from "@/helpers/handlers/api";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";

@@ -1,6 +1,6 @@
 /** @format */
 
-import { getProduct } from "@/app/helpers/api";
+import { getProduct } from "@/helpers/handlers/api";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -36,15 +36,15 @@ export default async function Page({ params }: Props) {
                 <button className="underline">Size Chart</button>
               </div>
               <div className="flex justify-between mb-6 text-white gap-3">
-                <div className="w-full h-12 rounded bg-black font-bold flex justify-center items-center">
-                  Brand New
-                </div>
-                <div className="w-full h-12 rounded bg-[#F2F2F2] font-bold grey flex justify-center items-center">
+                <button className="w-full h-12 rounded bg-black font-bold flex justify-center items-center">
+                  Add to Cart
+                </button>
+                <button className="w-full h-12 rounded bg-[#F2F2F2] font-bold grey flex justify-center items-center">
                   Used
-                </div>
-                <div className="w-full h-12 rounded bg-black font-bold flex justify-center items-center">
+                </button>
+                <button className="w-full h-12 rounded bg-black font-bold flex justify-center items-center">
                   Pre-Order
-                </div>
+                </button>
               </div>
 
               <div className="py-2 px-5">

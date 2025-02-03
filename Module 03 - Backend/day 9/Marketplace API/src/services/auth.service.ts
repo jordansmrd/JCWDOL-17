@@ -9,24 +9,26 @@ import { getUserByEmail } from "../helpers/user.prisma";
 import { ErrorHandler } from "../helpers/response.handler";
 import { UserLogin } from "../interfaces/user.interface";
 import { sign } from "jsonwebtoken";
+import { generateAuthToken } from "../helpers/token";
+import { cloudinaryUpload } from "../helpers/cloudinary";
 
 class AuthService {
   async signIn(req: Request) {
     const { email, password } = req.body;
 
     const user = (await getUserByEmail(email)) as UserLogin;
-    if (!user) throw new ErrorHandler("wrong email", 401);
+    if (!user)
+      throw new ErrorHandler(
+        "The email that you've entered is incorrect.",
+        401
+      );
     else if (!(await compare(password, user.password as string)))
-      throw new ErrorHandler("wrong password", 401);
+      throw new ErrorHandler(
+        "The password that you've entered is incorrect.",
+        401
+      );
 
-    delete user.password; //menghapus key dari object
-    const token = sign(user, jwt_secret, {
-      expiresIn: "20m",
-    });
-
-    return {
-      token,
-    };
+    return await generateAuthToken(user);
   }
 
   async signUp(req: Request) {
@@ -43,32 +45,37 @@ class AuthService {
   }
 
   async updateUser(req: Request) {
-    const { password, first_name, last_name, img_src } = req.body;
+    const { first_name, last_name } = req.body;
     const id = Number(req.user?.id);
     const data: Prisma.UserUpdateInput = {};
-    if (img_src) data.img_src = img_src;
-    if (password) data.password = password;
     if (first_name) data.first_name = first_name;
     if (last_name) data.last_name = last_name;
-
     await prisma.user.update({
       data,
       where: {
         id,
       },
     });
-    return await prisma.user.findUnique({
-      select: {
-        id: true,
-        first_name: true,
-        last_name: true,
-        role: true,
-        img_src: true,
+    return await this.refreshToken(req);
+  }
+  async uploadAvatar(req: Request) {
+    const id = Number(req.user?.id);
+    const { file } = req;
+    if (!file) throw new Error("No File Uploaded");
+    const { secure_url } = await cloudinaryUpload(file);
+    await prisma.user.update({
+      data: {
+        img_src: secure_url,
       },
       where: {
         id,
       },
     });
+  }
+  async refreshToken(req: Request) {
+    if (!req.user?.email) throw new ErrorHandler("invalid token");
+
+    return await generateAuthToken(undefined, req.user?.email);
   }
 }
 

@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
         hostname: "d5ibtax54de3q.cloudfront.net",
         protocol: "https",
       },
+      {
+        hostname: "res.cloudinary.com",
+        protocol: "https",
+      },
     ],
   },
 };

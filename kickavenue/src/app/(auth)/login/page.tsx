@@ -8,23 +8,31 @@ import Facebook from "@/../public/facebook.png";
 import Google from "@/../public/google.png";
 import { googleLogin, login } from "@/app/action/auth";
 import { useRouter } from "next/navigation";
+import Snackbar from "@mui/material/Snackbar";
+import { Alert } from "@mui/material";
 
 export default function Page() {
   const { push } = useRouter();
+  const [open, setOpen] = React.useState(false);
+  const [errMessage, setErrMessage] = React.useState("");
+
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     onSubmit: async (values) => {
+      setErrMessage("");
+
       await login(values)
         .then(() => {
-          alert("Login Successful");
+          setOpen(true);
           push("/");
         })
         .catch((error) => {
-          if (error instanceof Error) console.log(error.message);
-          alert("wrong email/password");
+          if (error instanceof Error) {
+            setErrMessage(error.message);
+          }
         });
     },
   });
@@ -60,7 +68,7 @@ export default function Page() {
           value={formik.values.password}
           onChange={formik.handleChange}
         />
-        <p className="text-xs text-red-500 mb-4">{}</p>
+        <p className="text-sm capitalize text-red-600 mb-4 ">{errMessage}</p>
         <button
           className={`${
             formik.isSubmitting
@@ -72,6 +80,17 @@ export default function Page() {
           {formik.isSubmitting ? "Processing..." : "Login"}
         </button>
       </form>
+      <Snackbar
+        open={open}
+        autoHideDuration={1500}
+        onClose={() => setOpen(false)}
+        message="Login Success"
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert severity="success" variant="filled" sx={{ width: "100%" }}>
+          Login Success
+        </Alert>
+      </Snackbar>
       <center>
         <Link href={"#"} className="green font-bold ">
           Forgot password?
