@@ -43,8 +43,6 @@ export const updateUser = async (
   },
   token: string
 ) => {
-  console.log(data, token);
-
   await api(
     "/auth",
     "PATCH",

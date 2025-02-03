@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 import { register } from "@/helpers/handlers/auth";
-import { registerInit } from "@/helpers/yup.init";
+import { registerInit } from "@/helpers/formik.init";
 import { registerValidator } from "@/models/auth.model";
 import { Alert, Snackbar } from "@mui/material";
 import { useFormik } from "formik";

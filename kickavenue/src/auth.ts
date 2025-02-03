@@ -43,6 +43,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return { access_token, refresh_token };
       } else if (token?.refresh_token || trigger == "update") {
         const newToken = await refreshToken(token.refresh_token!);
+        console.log("new token", newToken);
 
         return newToken;
       }
@@ -65,3 +66,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   },
 });
+
+//access_token = untuk mengakses service di dalam api
+//refresh_token = untuk mengupdate access_token yang baru

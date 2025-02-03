@@ -28,9 +28,13 @@ export const verifyRefreshToken = (
 ) => {
   try {
     const { authorization } = req.headers;
+
     const token = String(authorization || "").split("Bearer ")[1];
+    console.log(token);
+
     const verfiedUser = verify(token, refresh_jwt_secret);
-    req.user = verfiedUser as UserLogin;
+
+    req.user = verfiedUser as UserLogin; // {}
     next();
   } catch (error) {
     next(error);

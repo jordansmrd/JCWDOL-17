@@ -1,6 +1,6 @@
 /** @format */
 import multer, { FileFilterCallback } from "multer";
-import { join } from "path";
+import path, { join } from "path";
 import { type Request } from "express";
 
 const maxSize = 5048576;

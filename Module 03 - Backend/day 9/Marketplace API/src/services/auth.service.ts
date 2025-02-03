@@ -28,7 +28,7 @@ class AuthService {
         401
       );
 
-    return await generateAuthToken(user);
+    return await generateAuthToken(user); // access_token, refresh_token
   }
 
   async signUp(req: Request) {

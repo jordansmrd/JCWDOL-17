@@ -26,6 +26,7 @@ const extractPublicFromURL = (url: string) => {
   const publicId = publicWithExtension.split(".")[0];
   return publicId;
 };
+
 export const cloudinaryRemove = async (secure_url: string) => {
   try {
     const publicId = extractPublicFromURL(secure_url);

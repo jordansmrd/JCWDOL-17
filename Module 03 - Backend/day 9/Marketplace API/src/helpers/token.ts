@@ -7,15 +7,19 @@ import { getUserByEmail } from "./user.prisma";
 import { ErrorHandler } from "./response.handler";
 
 export const generateAuthToken = async (user?: UserLogin, email?: string) => {
-  const existUser = user || ((await getUserByEmail(email!)) as UserLogin);
-  if (!existUser) throw new ErrorHandler("wrong email", 401);
-  delete existUser.password;
+  const existingUser = user || ((await getUserByEmail(email!)) as UserLogin);
+  if (!existingUser) throw new ErrorHandler("wrong email", 401);
+  delete existingUser.password;
 
-  const access_token = sign(existUser, jwt_secret, {
+  const access_token = sign(existingUser, jwt_secret, {
     expiresIn: "20m",
   });
-  const refresh_token = sign({ email: existUser.email }, refresh_jwt_secret, {
-    expiresIn: "1h",
-  });
+  const refresh_token = sign(
+    { email: existingUser.email },
+    refresh_jwt_secret,
+    {
+      expiresIn: "1h",
+    }
+  );
   return { access_token, refresh_token };
 };

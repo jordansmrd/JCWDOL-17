@@ -3,7 +3,9 @@
 import { NextFunction, Request, Response } from "express";
 import { ErrorHandler, responseHandler } from "../helpers/response.handler";
 import authService from "../services/auth.service";
-import { cloudinaryRemove, cloudinaryUpload } from "../helpers/cloudinary";
+import { cloudinaryRemove } from "../helpers/cloudinary";
+import { transporter } from "../helpers/nodemailer";
+import { hbs } from "../helpers/handlebars";
 
 class AuthController {
   async signIn(req: Request, res: Response, next: NextFunction) {
@@ -55,6 +57,25 @@ class AuthController {
       const secure_url = req.body.image_url;
       await cloudinaryRemove(secure_url);
       responseHandler(res, "delete image success", secure_url);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async sendMail(req: Request, res: Response, next: NextFunction) {
+    try {
+      const compiledTemplate = hbs("template.hbs");
+      const html = compiledTemplate({
+        name: req.body.name,
+        email: req.body.email,
+      });
+
+      transporter.sendMail({
+        to: req.body.email,
+        subject: "Email confimation",
+        html,
+      });
+      responseHandler(res, "check your email");
     } catch (error) {
       next(error);
     }

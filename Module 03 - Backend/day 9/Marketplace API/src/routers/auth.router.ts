@@ -29,5 +29,7 @@ export const authRouter = () => {
   );
   router.delete("/image", verifyUser, authController.removeImageCloudinary);
 
+  router.post("/mail", authController.sendMail);
+
   return router;
 };

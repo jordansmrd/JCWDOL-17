@@ -20,7 +20,8 @@ export class App {
   }
 
   private configure() {
-    this.app.use(express.json());
+    this.app.use(express.json()); // accessing req.body (json)
+    // this.app.use(express.urlencoded());
     this.app.use(cors());
   }
 

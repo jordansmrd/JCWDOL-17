@@ -1,6 +1,6 @@
 /** @format */
 import { ICard } from "@/interfaces/card.interface";
-import { api_url, nox_url } from "../config";
+import { api_url, xano_url } from "../config";
 
 export const api = async (
   path: string,
@@ -28,13 +28,13 @@ export const api = async (
 };
 
 export const getProducts = async (productName: string) => {
-  const res = await fetch(nox_url + "/products?search=" + productName);
+  const res = await fetch(xano_url + "/products?search=" + productName);
   const data = await res.json();
   return data;
 };
 
 export const getProduct = async (slug: string) => {
-  const res = await fetch(nox_url + "/products?slug=" + slug);
+  const res = await fetch(xano_url + "/products?slug=" + slug);
   const data = (await res.json()) as ICard[];
   if (!data.length) throw Error("no Data");
   return data[0];

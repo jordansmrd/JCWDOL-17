@@ -10,7 +10,7 @@ import { uploadAvatar } from "@/helpers/handlers/upload";
 import { useSession } from "next-auth/react";
 import { updateUser } from "@/helpers/handlers/auth";
 import { updateProfileValidator } from "@/models/auth.model";
-import { updateProfileInit } from "@/helpers/yup.init";
+import { updateProfileInit } from "@/helpers/formik.init";
 export default function ProfileComponent(user: User) {
   const { data: session, update } = useSession();
   const [errMessage, setErrMessage] = React.useState("");
@@ -27,7 +27,6 @@ export default function ProfileComponent(user: User) {
         const form = new FormData();
         form.append("image", image);
         await uploadAvatar(form, user.access_token!);
-        formik.setFieldValue("image_url", URL.createObjectURL(image));
         await update();
       }
       setIsLoading(false);
