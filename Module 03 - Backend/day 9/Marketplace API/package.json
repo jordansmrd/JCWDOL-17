@@ -30,7 +30,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --files src/index.ts",
-    "prisma:migrate": "dotenv -e .env.local -- npx prisma migrate dev"
+    "prisma:migrate": "dotenv -e .env.local -- npx prisma migrate dev",
+    "start": "tsc && node dist/index.js"
   },
   "keywords": [],
   "author": "",

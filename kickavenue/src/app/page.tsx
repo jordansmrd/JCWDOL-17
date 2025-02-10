@@ -2,6 +2,7 @@
 import Carousel1 from "@/../public/carousel_1.jpeg";
 import CardList from "@/components/card.component";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -14,7 +15,9 @@ export default function Home() {
           className="w-full"
           alt=""
         />
-        <CardList />
+        <Suspense>
+          <CardList />
+        </Suspense>
       </div>
     </div>
   );

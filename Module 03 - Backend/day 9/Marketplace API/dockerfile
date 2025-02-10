@@ -1,0 +1,23 @@
+FROM node:20.9.0
+RUN npm install typescript -g
+
+WORKDIR /app 
+
+COPY package.json /app
+
+COPY /prisma ./prisma
+
+RUN npm install
+
+RUN npx prisma generate
+
+COPY . . 
+
+EXPOSE 8002
+
+CMD [ "npm" , "run", "start"]
+
+
+# # setiap project yang buat dibuat image akan membuat dockerfile
+# docker yaml berguna untuk setup apabila terdapat lebih dari
+#  1 image yang mau dibentuk dalam 1 container

@@ -42,8 +42,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const { access_token, refresh_token } = user;
         return { access_token, refresh_token };
       } else if (token?.refresh_token || trigger == "update") {
-        const newToken = await refreshToken(token.refresh_token!);
-        console.log("new token", newToken);
+        const newToken = await refreshToken();
 
         return newToken;
       }
