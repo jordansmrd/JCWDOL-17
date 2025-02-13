@@ -3,7 +3,7 @@
 import { useFormik } from "formik";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import Facebook from "@/../public/facebook.png";
 import Google from "@/../public/google.png";
 import { googleLogin, login } from "@/app/action/auth";
@@ -13,7 +13,7 @@ import { Alert } from "@mui/material";
 
 export default function Page() {
   const { push } = useRouter();
-  const [open, setOpen] = React.useState(false);
+  const open = useRef(false);
   const [errMessage, setErrMessage] = React.useState("");
 
   const formik = useFormik({
@@ -27,7 +27,7 @@ export default function Page() {
         if (res?.error) {
           setErrMessage(res.error);
         } else {
-          setOpen(true);
+          open.current = true;
           push("/");
         }
       });
@@ -78,9 +78,11 @@ export default function Page() {
         </button>
       </form>
       <Snackbar
-        open={open}
+        open={open.current}
         autoHideDuration={1500}
-        onClose={() => setOpen(false)}
+        onClose={() => {
+          open.current = false;
+        }}
         message="Login Success"
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >

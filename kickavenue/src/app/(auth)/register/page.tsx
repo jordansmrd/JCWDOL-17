@@ -6,11 +6,11 @@ import { registerValidator } from "@/models/auth.model";
 import { Alert, Snackbar } from "@mui/material";
 import { useFormik } from "formik";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 
 export default function Page() {
   const [errMessage, setErrMessage] = React.useState("");
-  const [open, setOpen] = React.useState(false);
+  const open = useRef(false);
 
   const formik = useFormik({
     validationSchema: registerValidator,
@@ -20,7 +20,7 @@ export default function Page() {
       await register(values).then((res) => {
         if (res?.error) setErrMessage(res.error);
         else {
-          setOpen(true);
+          open.current = true;
           formik.resetForm();
         }
       });
@@ -114,9 +114,11 @@ export default function Page() {
         <center>{"Your data will be protected and will not be shared"}</center>
       </form>
       <Snackbar
-        open={open}
+        open={open.current}
         autoHideDuration={1500}
-        onClose={() => setOpen(false)}
+        onClose={() => {
+          open.current = false;
+        }}
         message="Login Success"
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >

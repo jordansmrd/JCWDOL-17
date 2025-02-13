@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import type { Metadata } from "next";
+import { auth } from "@/auth";
+import ButtonAddToCart from "@/components/product.component";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: "marketplace kickavenue",
   };
 }
-
 export default async function Page({ params }: Props) {
   const slug = (await params).slug;
   const product = await getProduct(slug);
+  const session = await auth();
 
   return (
     <div className="flex justify-center">
@@ -50,9 +52,7 @@ export default async function Page({ params }: Props) {
                 <button className="underline">Size Chart</button>
               </div>
               <div className="flex justify-between mb-6 text-white gap-3">
-                <button className="w-full h-12 rounded bg-black font-bold flex justify-center items-center">
-                  Add to Cart
-                </button>
+                <ButtonAddToCart product={product} session={session} />
                 <button className="w-full h-12 rounded bg-[#F2F2F2] font-bold grey flex justify-center items-center">
                   Used
                 </button>

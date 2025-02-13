@@ -14,13 +14,14 @@ import { updateProfileInit } from "@/helpers/formik.init";
 export default function ProfileComponent(user: User) {
   const { data: session, update } = useSession();
   const [errMessage, setErrMessage] = React.useState("");
-  const [open, setOpen] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const open = useRef(false);
+  const loading = useRef(false);
+
   const ref = useRef<HTMLInputElement>(null);
 
   const upload = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsLoading(true);
+      loading.current = true;
       if (e.target.files?.length) {
         const image: File = e.target.files[0];
         formik.setFieldValue("image", image);
@@ -29,7 +30,7 @@ export default function ProfileComponent(user: User) {
         await uploadAvatar(form, user.access_token!);
         await update();
       }
-      setIsLoading(false);
+      loading.current = false;
     },
     [session]
   );
@@ -42,7 +43,7 @@ export default function ProfileComponent(user: User) {
         setErrMessage("");
         await updateUser(values, session?.user.access_token as string);
         await update();
-        setOpen(true);
+        open.current = true;
       } catch (error) {
         if (error instanceof Error) setErrMessage(error.message);
       }
@@ -80,8 +81,10 @@ export default function ProfileComponent(user: User) {
                   className={`mt-2 font-bold text-xs cursor-pointer `}
                   onClick={() => ref.current?.click()}
                   type="button"
-                  value={isLoading ? "Uploading..." : "Upload new Picture"}
-                  disabled={isLoading}
+                  value={
+                    loading.current ? "Uploading..." : "Upload new Picture"
+                  }
+                  disabled={loading.current}
                 ></input>
               </center>
 
@@ -151,10 +154,9 @@ export default function ProfileComponent(user: User) {
               </center>
             </form>
             <Snackbar
-              open={open}
+              open={open.current}
               autoHideDuration={1500}
-              onClose={() => setOpen(false)}
-              message="Login Success"
+              onClose={() => (open.current = false)}
               anchorOrigin={{ vertical: "top", horizontal: "center" }}
             >
               <Alert severity="success" variant="filled" sx={{ width: "100%" }}>

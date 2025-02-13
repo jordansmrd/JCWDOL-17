@@ -12,7 +12,10 @@ export async function middleware(request: NextRequest) {
     session?.user?.id
   )
     return NextResponse.redirect(new URL("/", request.nextUrl)); // guest only
-  else if (pathname.startsWith("/my-profile") && !session?.user?.id)
+  else if (
+    (pathname.startsWith("/my-profile") || pathname.startsWith("/cart")) &&
+    !session?.user?.id
+  )
     return NextResponse.redirect(new URL("/login", request.nextUrl)); // user only
 
   return NextResponse.next();

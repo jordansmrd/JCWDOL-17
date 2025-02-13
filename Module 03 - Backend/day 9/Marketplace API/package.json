@@ -36,7 +36,7 @@
     "build": "rimraf dist && tsc && prisma generate",
     "start": "npm run build && node dist/src/index.js",
     "add-build": "git add dist",
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "dotenv -e .env.local -- ts-node prisma/seed.ts"
   },
   "pre-commit": [
     "ts.check",

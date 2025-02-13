@@ -3,8 +3,10 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import { PORT } from "./config";
 import { ErrorHandler } from "./helpers/response.handler";
-import { productRouter } from "./routers/product.controller";
+import { productRouter } from "./routers/product.router";
 import { authRouter } from "./routers/auth.router";
+import { cartRouter } from "./routers/cart.router";
+
 export class App {
   private app: Application;
   constructor() {
@@ -17,6 +19,7 @@ export class App {
   private routes() {
     this.app.use("/api/products", productRouter());
     this.app.use("/api/auth", authRouter());
+    this.app.use("/api/carts", cartRouter());
   }
 
   private configure() {
@@ -24,7 +27,7 @@ export class App {
     // this.app.use(express.urlencoded());
     this.app.use(
       cors({
-        origin: ["https://kicks-17.vercel.app/"],
+        origin: ["http://localhost:3000"],
       })
     );
   }
