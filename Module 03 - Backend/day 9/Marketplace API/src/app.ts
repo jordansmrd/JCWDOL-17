@@ -22,7 +22,11 @@ export class App {
   private configure() {
     this.app.use(express.json()); // accessing req.body (json)
     // this.app.use(express.urlencoded());
-    this.app.use(cors());
+    this.app.use(
+      cors({
+        origin: ["https://kicks-17.vercel.app/"],
+      })
+    );
   }
 
   private handleError() {

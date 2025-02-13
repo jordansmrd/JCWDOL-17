@@ -1,0 +1,88 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzc4MjEzL2EyN2M4NjU2Nzk2MjYyMDkzODBhNTc3ZWQzOWQ0NGZhLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwfSwid2VicCI6eyJxdWFsaXR5Ijo1MH19fQ==",
+      "price": 1500000,
+      "product_name": "Nike P-6000 Metallic Silver Sail",
+      "slug": "nike-p-6000-metalic-silver-sail"
+    },
+    {
+      "id": 2,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzY0MTQ2LzNlZDdjMzQ0OWFjZDVlMTNmNDhmZjU5MTI1ZTEzMDZlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMH0sIndlYnAiOnsicXVhbGl0eSI6NTB9fX0=",
+      "product_name": "ASICS Gel-Kayano 14 Cream Black Metallic Plum",
+      "price": 2445000,
+      "slug": "asics-gel-kayano-140-cream-black-metallic-plum"
+    },
+    {
+      "id": 3,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzEwNTMwNi9kOTMyYTM3YjEyMTUyNGIwYjRhMjA0ZjQwNWViMjQwOS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMH0sIndlYnAiOnsicXVhbGl0eSI6NTB9fX0=",
+      "product_name": "Adidas Samba Nylon Wales Bonner Wonder Clay Royal",
+      "price": 3800000,
+      "slug": "adidas-samba-nylon-wales-bonner-wonder-clay-royal"
+    },
+    {
+      "id": 4,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzc5Mjk5LzExNWQzYzdmOGQyY2ZmZDFjMjZhOTM3NDJhNWYxMmVmLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwfSwid2VicCI6eyJxdWFsaXR5Ijo1MH19fQ==",
+      "product_name": "Puma Palermo Leather White Vapor Grey Gum",
+      "price": 12500000,
+      "slug": "puma-palermo-leather-white-vapor-grey-gum"
+    },
+    {
+      "id": 5,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzk2Nzk2LzE4MmIyMzdhNjk5ODQyZmU0NTFmYjFmNjhlZWRmZmQzLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwfSwid2VicCI6eyJxdWFsaXR5Ijo1MH19fQ==",
+      "product_name": "Adidas Samba OG Cream White Sand Strata (W)",
+      "price": 17500000,
+      "slug": "adidas-samba-og-cream-white-sand-strata-w"
+    },
+    {
+      "id": 6,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzM4NDUyLzg3Mjc0YjcxZTE3NWQ4NGY3Mzc2ZDM0ZGE5Nzg5MDlhLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MTQwMH19fQ==",
+      "product_name": "Salomon XT-6 Black Phantom",
+      "price": 3150000,
+      "slug": "salomon-xt-6-black-phantom"
+    },
+    {
+      "id": 7,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzc2NTE0LzM5MGFkYjRhMDJkMDdlZGVhMGY0ZmVlNzFiZDBlYzk1LnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwfSwid2VicCI6eyJxdWFsaXR5Ijo1MH19fQ==",
+      "product_name": "Nike Zoom Vomero 5 Triple Black (2023)",
+      "price": 1700000,
+      "slug": "nike-zoom-vomero-5-triple-black-2023"
+    },
+    {
+      "id": 8,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzc0MzA0Lzk0N2JlYmFmNDgwNzVmZjNiY2Y0ZDI3OGE0YzgyMzljLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwfSwid2VicCI6eyJxdWFsaXR5Ijo1MH19fQ==",
+      "product_name": "Adidas Handball Spezial Collegiate Green Gum",
+      "price": 1550000,
+      "slug": "adidas-handball-spezial-collegiate-green-gum"
+    },
+    {
+      "id": 9,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzI2NjUxLzI4NzZmODQwODYxOTM3NjVkMTE5MmYyYTBhZmIyYWIxLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwfSwid2VicCI6eyJxdWFsaXR5Ijo1MH19fQ==",
+      "product_name": "Air Jordan 1 Low Bred Toe",
+      "price": 1800000,
+      "slug": "air-jordan-1-low-bred-toe"
+    },
+    {
+      "id": 10,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzExOTgzLzJkNGEwNTMwNmY5YzM2NDA3NDlmOTk5NjlkOTgxNWZhLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMH0sIndlYnAiOnsicXVhbGl0eSI6NTB9fX0=",
+      "product_name": "Air Jordan 1 Retro High Dark Mocha",
+      "price": 3000000,
+      "slug": "air-jordan-1-retro-high-dark-mocha"
+    },
+    {
+      "id": 11,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzY0MTA3L2Q0ODBjY2RkYzVkOTdiNjc1NWM3M2MyMDY3Zjg4MmQyLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMH0sIndlYnAiOnsicXVhbGl0eSI6NTB9fX0=",
+      "product_name": "Air Jordan 1 Retro High OG UNC Toe",
+      "price": 2750000,
+      "slug": "air-jordan-1-retro-high-og-unc-toe"
+    },
+    {
+      "id": 12,
+      "img_src": "https://d5ibtax54de3q.cloudfront.net/eyJidWNrZXQiOiJraWNrYXZlbnVlLWFzc2V0cyIsImtleSI6InByb2R1Y3RzLzI0NzI1L2RhZWE1MTRlODFjMjFlMjkxNDg4OGEzOTgyMzdlZTM0LnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwfSwid2VicCI6eyJxdWFsaXR5Ijo1MH19fQ==",
+      "product_name": "Air Jordan 1 Low Fragment x Travis Scott",
+      "price": 13250000,
+      "slug": "air-jordan-1-low-fragment-x-travis-scott"
+    }
+  ]
+}

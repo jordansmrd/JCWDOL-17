@@ -34,6 +34,7 @@ class ProductController {
   async getProducts(req: Request, res: Response, next: NextFunction) {
     try {
       const data = await productService.getList(req);
+
       responseHandler(res, "fetching products", data);
     } catch (error) {
       next(error);

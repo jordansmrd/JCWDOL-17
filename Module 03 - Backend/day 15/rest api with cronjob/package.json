@@ -1,0 +1,22 @@
+{
+  "name": "rest-api-with-cronjob",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node-cron": "^3.0.11",
+    "dayjs": "^1.11.13",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "node-cron": "^3.0.3"
+  }
+}

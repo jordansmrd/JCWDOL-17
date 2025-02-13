@@ -65,7 +65,7 @@ export default function ProfileComponent(user: User) {
                 <Image
                   width={500}
                   height={500}
-                  className=" rounded-full w-[250] h-[250] object-cover"
+                  className="rounded-full w-[250] h-[250] aspect-square object-cover"
                   src={session?.user.img_src || DefaultAvatar}
                   alt="avatar img"
                 />

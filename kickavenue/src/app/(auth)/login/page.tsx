@@ -23,17 +23,14 @@ export default function Page() {
     },
     onSubmit: async (values) => {
       setErrMessage("");
-
-      await login(values)
-        .then(() => {
+      await login(values).then((res) => {
+        if (res?.error) {
+          setErrMessage(res.error);
+        } else {
           setOpen(true);
           push("/");
-        })
-        .catch((error) => {
-          if (error instanceof Error) {
-            setErrMessage(error.message);
-          }
-        });
+        }
+      });
     },
   });
 

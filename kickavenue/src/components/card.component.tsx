@@ -1,12 +1,12 @@
 /** @format */
 "use client";
-import { getProducts } from "@/helpers/handlers/api";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ICard } from "@/interfaces/card.interface";
 import CardSkeletonList from "./skeleton/card.skeleton";
+import { getProducts } from "@/helpers/handlers/products";
 
 export default function CardList() {
   const [products, setProducts] = useState<Array<ICard>>([]);

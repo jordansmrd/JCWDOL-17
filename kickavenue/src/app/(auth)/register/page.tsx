@@ -16,14 +16,14 @@ export default function Page() {
     validationSchema: registerValidator,
     initialValues: registerInit,
     onSubmit: async (values) => {
-      try {
-        setErrMessage("");
-        await register(values);
-        setOpen(true);
-        formik.resetForm();
-      } catch (error) {
-        if (error instanceof Error) setErrMessage(error.message);
-      }
+      setErrMessage("");
+      await register(values).then((res) => {
+        if (res?.error) setErrMessage(res.error);
+        else {
+          setOpen(true);
+          formik.resetForm();
+        }
+      });
     },
   });
 

@@ -19,17 +19,18 @@ enum Role {
 }
 
 model User {
-  id         Int       @id @default(autoincrement())
-  first_name String    @db.VarChar(100)
-  last_name  String    @db.VarChar(100)
-  email      String    @unique @db.VarChar(100)
-  password   String    @db.VarChar(100)
+  id         Int     @id @default(autoincrement())
+  first_name String  @db.VarChar(100)
+  last_name  String  @db.VarChar(100)
+  email      String  @unique @db.VarChar(100)
+  password   String  @db.VarChar(100)
   img_src    String?
-  role       Role      @default(User)
-  products   Product[]
+  role       Role    @default(User)
+  cart       Cart[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  Transaction Transaction[]
 
   @@map("users")
 }
@@ -41,11 +42,46 @@ model Product {
   price        Decimal   @db.Decimal(18, 2)
   slug         String    @unique
   isDeleted    DateTime?
+  cart         Cart[]
+
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  TransactionDetail TransactionDetail[]
+
+  @@map("products")
+}
+
+model Cart {
+  userId    Int
+  productId Int
+  User      User    @relation(fields: [userId], references: [id])
+  Product   Product @relation(fields: [productId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    Int?
 
-  @@map("products")
+  @@id([productId, userId])
+  @@map("carts")
+}
+
+model Transaction {
+  id                Int                 @id @default(autoincrement())
+  noInvoice         String
+  userId            Int
+  User              User                @relation(fields: [userId], references: [id])
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  TransactionDetail TransactionDetail[]
+}
+
+model TransactionDetail {
+  id            Int      @id @default(autoincrement())
+  price         Decimal  @db.Decimal(18, 2)
+  productId     Int
+  transactionId Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  Transaction Transaction @relation(fields: [transactionId], references: [id])
+  Product     Product     @relation(fields: [productId], references: [id])
 }

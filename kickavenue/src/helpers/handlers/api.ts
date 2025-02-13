@@ -1,6 +1,6 @@
 /** @format */
-import { ICard } from "@/interfaces/card.interface";
-import { api_url, xano_url } from "../config";
+
+import { api_url } from "../config";
 import { jwtDecode } from "jwt-decode";
 import { refreshToken } from "./auth";
 
@@ -33,17 +33,4 @@ export const api = async (
   const json = await res.json();
   if (res.status > 299) throw new Error(json.message);
   return json;
-};
-
-export const getProducts = async (productName: string) => {
-  const res = await fetch(xano_url + "/products?search=" + productName);
-  const data = await res.json();
-  return data;
-};
-
-export const getProduct = async (slug: string) => {
-  const res = await fetch(xano_url + "/products?slug=" + slug);
-  const data = (await res.json()) as ICard[];
-  if (!data.length) throw Error("no Data");
-  return data[0];
 };

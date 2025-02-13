@@ -1,13 +1,27 @@
 /** @format */
 
-import { getProduct } from "@/helpers/handlers/api";
+import { getProduct } from "@/helpers/handlers/products";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import type { Metadata } from "next";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProduct(slug);
+
+  return {
+    title: product.product_name,
+    openGraph: {
+      images: [product.img_src],
+    },
+    description: "marketplace kickavenue",
+  };
+}
 
 export default async function Page({ params }: Props) {
   const slug = (await params).slug;
@@ -31,7 +45,7 @@ export default async function Page({ params }: Props) {
               <p className="w-full">start from</p>
               <div className="flex justify-between mb-4">
                 <h1 className="font-bold text-xl ">
-                  IDR {product.price.toLocaleString()}
+                  IDR {Number(product.price || 0).toLocaleString()}
                 </h1>
                 <button className="underline">Size Chart</button>
               </div>

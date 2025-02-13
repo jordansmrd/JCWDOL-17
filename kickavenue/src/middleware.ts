@@ -6,18 +6,16 @@ import { auth } from "./auth";
 
 export async function middleware(request: NextRequest) {
   const session = await auth(); // get user session
-
   const { pathname } = request.nextUrl;
   if (
     (pathname.startsWith("/login") || pathname.startsWith("/register")) &&
-    session?.user.id
-  ) {
-    return NextResponse.redirect(new URL("/", request.nextUrl));
-  }
+    session?.user?.id
+  )
+    return NextResponse.redirect(new URL("/", request.nextUrl)); // guest only
+  else if (pathname.startsWith("/my-profile") && !session?.user?.id)
+    return NextResponse.redirect(new URL("/login", request.nextUrl)); // user only
 
-  if (pathname.startsWith("/admin") && session?.user.role !== "Admin") {
-    return NextResponse.redirect(new URL("/", request.nextUrl));
-  }
+  return NextResponse.next();
 }
 
 export const config = {

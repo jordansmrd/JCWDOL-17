@@ -8,17 +8,12 @@ import { pagination } from "../helpers/pagination";
 
 class ProductService {
   async create(req: Request) {
-    const { product_name, img_src, price, userId } = req.body;
+    const { product_name, img_src, price } = req.body;
     const data: Prisma.ProductCreateInput = {
       product_name,
       img_src,
       price,
       slug: slugGenerator(product_name),
-      User: {
-        connect: {
-          id: userId,
-        },
-      },
     };
 
     await prisma.product.create({
@@ -67,7 +62,7 @@ class ProductService {
         },
         isDeleted: null,
       },
-      ...pagination(Number(page)),
+      ...pagination(Number(page), 16),
     });
   }
 }

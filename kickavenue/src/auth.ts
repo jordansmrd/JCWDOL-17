@@ -8,6 +8,23 @@ import { jwtDecode } from "jwt-decode";
 import { InvalidAuthError } from "./interfaces/auth.error";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  pages: {
+    signIn: "/login",
+  },
+  cookies: {
+    sessionToken: {
+      name: "next-auth.session-token",
+      options: {
+        domain: process.env.AUTH_DOMAIN as string,
+        path: "/",
+        httpOnly: true,
+        sameSite: "lax",
+        secure: true,
+      },
+    },
+  },
+  secret: process.env.AUTH_SECRET as string,
+  trustHost: true,
   session: {
     strategy: "jwt",
     maxAge: 60 * 20,
@@ -41,7 +58,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         const { access_token, refresh_token } = user;
         return { access_token, refresh_token };
-      } else if (token?.refresh_token || trigger == "update") {
+      } else if (token.access_token || trigger == "update") {
         const newToken = await refreshToken();
 
         return newToken;
