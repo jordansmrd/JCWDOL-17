@@ -2,7 +2,7 @@
 import { Prisma } from "@prisma/client";
 import { Request } from "express";
 import { slugGenerator } from "../helpers/slug.generator";
-import { prisma } from "../config";
+import { prisma, snap } from "../config";
 import { pagination } from "../helpers/pagination";
 import { ErrorHandler } from "../helpers/response.handler";
 
@@ -63,6 +63,74 @@ class CartService {
           userId: Number(req.user?.id),
         },
       },
+    });
+  }
+
+  async checkout(req: Request) {
+    return await prisma.$transaction(async (prisma) => {
+      const carts = await prisma.cart.findMany({
+        include: {
+          Product: true,
+        },
+        where: {
+          userId: req.user?.id,
+        },
+      }); //check existing cart
+
+      if (carts.length == 0) throw new ErrorHandler("Your Cart is Empty");
+
+      //create data for transaction & transaction details
+      const data: Prisma.TransactionCreateInput = {
+        noInvoice: "INV" + new Date().valueOf(),
+        User: {
+          connect: {
+            id: req.user?.id,
+          },
+        },
+        TransactionDetail: {
+          createMany: {
+            data: carts.map(({ productId, Product }) => ({
+              productId,
+              price: Product.price,
+            })),
+          },
+        },
+      };
+
+      const { id } = await prisma.transaction.create({
+        data,
+      }); //create transaction & transaction details
+
+      const transactions = await prisma.transaction.findUnique({
+        include: {
+          TransactionDetail: true,
+        },
+        where: {
+          id,
+        },
+      });
+
+      //create parameter for midtrans transaction
+      let parameter = {
+        transaction_details: {
+          order_id: transactions?.noInvoice,
+          gross_amount: transactions?.TransactionDetail.reduce(
+            (sum, { price }) => sum + Number(price),
+            0
+          ),
+        },
+      };
+
+      const { token, redirect_url } = await snap.createTransaction(parameter); // create transaction in midtrans
+      console.log(redirect_url);
+
+      await prisma.cart.deleteMany({
+        where: {
+          userId: req.user?.id,
+        },
+      });
+
+      return token;
     });
   }
 }

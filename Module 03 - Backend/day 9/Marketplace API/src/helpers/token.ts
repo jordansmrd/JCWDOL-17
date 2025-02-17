@@ -12,7 +12,7 @@ export const generateAuthToken = async (user?: UserLogin, email?: string) => {
   delete existingUser.password;
 
   const access_token = sign(existingUser, jwt_secret, {
-    expiresIn: "1m",
+    expiresIn: "30m",
   });
   const refresh_token = sign(
     { email: existingUser.email },

@@ -1,7 +1,9 @@
 /** @format */
+//@ts-nocheck
 import { config } from "dotenv";
 import { resolve } from "path";
 import { PrismaClient } from "@prisma/client";
+import MidtransClient from "midtrans-client";
 
 config({ path: resolve(__dirname, `../${".env"}`) });
 const NODE_ENV = process.env.NODE_ENV || "development";
@@ -20,3 +22,8 @@ export const node_account = {
   user: process.env.NODEMAILER_USER || "",
   pass: process.env.NODEMAILER_PASS || "",
 };
+
+export const snap = new MidtransClient.Snap({
+  isProduction: false,
+  serverKey: process.env.MIDTRANS_SERVER_KEY,
+});

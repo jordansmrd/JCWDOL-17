@@ -36,6 +36,19 @@ class CartController {
       next(error);
     }
   }
+
+  async checkout(req: Request, res: Response, next: NextFunction) {
+    try {
+      const token = await cartService.checkout(req);
+      responseHandler(
+        res,
+        "your transaction has been created, please proceed your payment through midtrans",
+        token
+      );
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export default new CartController();

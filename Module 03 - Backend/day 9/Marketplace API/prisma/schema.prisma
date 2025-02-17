@@ -64,9 +64,15 @@ model Cart {
   @@map("carts")
 }
 
+enum TransactionStatus {
+  PAID
+  PENDING
+}
+
 model Transaction {
   id                Int                 @id @default(autoincrement())
   noInvoice         String
+  status            TransactionStatus   @default(PENDING)
   userId            Int
   User              User                @relation(fields: [userId], references: [id])
   createdAt         DateTime            @default(now())
